@@ -221,7 +221,6 @@ void nand_boot(void)
 {
 	struct nand_chip nand_chip;
 	nand_info_t nand_info;
-	int ret;
 	__attribute__((noreturn)) void (*uboot)(void);
 
 	/*
@@ -240,8 +239,8 @@ void nand_boot(void)
 	/*
 	 * Load U-Boot image from NAND into RAM
 	 */
-	ret = nand_load(&nand_info, CONFIG_SYS_NAND_U_BOOT_OFFS, CONFIG_SYS_NAND_U_BOOT_SIZE,
-			(uchar *)CONFIG_SYS_NAND_U_BOOT_DST);
+	nand_load(&nand_info, CONFIG_SYS_NAND_U_BOOT_OFFS, CONFIG_SYS_NAND_U_BOOT_SIZE,
+		  (uchar *)CONFIG_SYS_NAND_U_BOOT_DST);
 
 #ifdef CONFIG_NAND_ENV_DST
 	nand_load(&nand_info, CONFIG_ENV_OFFSET, CONFIG_ENV_SIZE,
